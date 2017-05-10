@@ -3,40 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-<script type="text/javascript"  src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-    <script src="jquery.validate.min.js" ></script>
-    <script src="validate_custom.js" ></script>
-    <script src="messages_zh.min.js" ></script>
+    <script src="../../lwj.js"></script>
+    <script type="text/javascript"  src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="jquery.validate.js" ></script>
     <script type="text/javascript">
-        $.validator.setDefaults({
-            highlight : function(a) {
-                $(a).closest(".form-group").removeClass(
-                        "has-success").addClass("has-error")
-            },
-            success : function(a) {
-                a.closest(".form-group").removeClass("has-error")
-                        .addClass("has-success")
-            },
-            errorElement : "span",
-            errorPlacement : function(a, b) {
-                if (b.is(":radio") || b.is(":checkbox")) {
-                    a.appendTo(b.parent().parent().parent())
-                } else {
-                    a.appendTo(b.parent())
-                }
-            },
-            errorClass : "help-block m-b-none",
-            validClass : "help-block m-b-none"
-        });
-        $().ready(function() {
-            $("#form-validation").validate();
-
-        });
+       lwjui.uses(["directive"]);
     </script>
 </head>
 <body>
 
-<form name="form_product" id="form-validation" action="" class="form-horizontal form-validation" accept-charset="UTF-8" method="post">
+<form name="form_product" id="form-validation" ui-validate action="" class="form-horizontal form-validation" accept-charset="UTF-8" method="post">
     <input type="text" id="text1" class="form-control" placeholder="不能为空" required="true" value="" />
     <input type="text" id="text2" email="true" class="form-control" placeholder="验证邮箱"  value="" />
     <input type="text" id="text3" url="true" class="form-control" placeholder="验证URL"value="" />

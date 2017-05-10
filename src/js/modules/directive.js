@@ -31,6 +31,15 @@
 					el.element.append(tpl);
 				}
 			};
-		});
+		})
+		.directive('ui-validate',function(){
+			return {
+				uses:["plugin/validate/formValidate","plugin/validate/messages_zh"],
+				addcss:["formValidate"],
+				link:function(el){
+					console.log(el)
+				}
+			}
+		})
 
 })(window, lwjui);
