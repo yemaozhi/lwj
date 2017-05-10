@@ -19,6 +19,11 @@
             return this.optional(element) || /\w+((-w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+/.test(value);
         }, "请输入有效的邮箱");
 
+        //验证银行卡号
+        jQuery.validator.addMethod("creditcard",function(value,element){
+            return this.optional(element) || /^(\d{16}|\d{19})$/.test(value);
+        });
+
         // 判断整数value是否等于0
         jQuery.validator.addMethod("isIntZero", function(value, element) {
             value=parseInt(value);
@@ -123,7 +128,7 @@
 
         // 手机号码验证
         jQuery.validator.addMethod("mobile", function(value, element) {
-            return this.optional(element) || (/^\d{11}/.test(value));
+            return this.optional(element) || /^\d{11}/.test(value);
         }, "请正确填写您的手机号码。");
 
 
@@ -149,7 +154,7 @@
 
         // 匹配qq
         jQuery.validator.addMethod("isQq", function(value, element) {
-            return this.optional(element) || /^[1-9]\d{4,12}$/;
+            return this.optional(element) || /^[1-9]\d{4,12}$/.test(value);
         }, "请输入正确的QQ号");
 
         // 邮政编码验证
@@ -160,8 +165,8 @@
 
         // 匹配密码，以字母开头，长度在6-12之间，只能包含字符、数字和下划线。
         jQuery.validator.addMethod("isPwd", function(value, element) {
-            return this.optional(element) || /^[a-zA-Z]\\w{6,12}$/.test(value);
-        }, "以字母开头，长度在6-12之间，只能包含字i符、数字和下划线。");
+            return this.optional(element) || /^[a-zA-Z]\w{5,11}$/.test(value);
+        }, "以字母开头，长度在6-12之间，只能包含字符、数字和下划线。");
 
         // 身份证号码验证
         jQuery.validator.addMethod("idCard", function(value, element) {
@@ -170,7 +175,7 @@
 
         // IP地址验证
         jQuery.validator.addMethod("ip", function(value, element) {
-            return this.optional(element) || /^(([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))\.)(([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))\.){2}([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))$/.test(value);
+            return this.optional(element) || /((?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d))/.test(value);
         }, "请填写正确的IP地址。");
 
         // 字符验证，只能包含中文、英文、数字、下划线等字符。
@@ -234,7 +239,6 @@
     $validate.validateInit=function($this,p){
         p= $.extend(p);
         $($this).validate({
-            debug:true,
             errorElement: p.errorElement||"label",
             errorClass: p.errorClass||"validate_error",
             //未通过验证时样式

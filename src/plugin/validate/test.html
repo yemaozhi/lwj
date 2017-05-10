@@ -7,7 +7,10 @@
     <script type="text/javascript"  src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script src="jquery.validate.js" ></script>
     <script type="text/javascript">
-       lwjui.uses(["directive"]);
+        $(function(){
+            lwjui.uses(["directive"]);
+
+        });
     </script>
 </head>
 <body>
@@ -19,15 +22,15 @@
     <input type="text" id="text4" date="true" class="form-control" placeholder="验证日期 " value="" />
     <input type="text" id="text5" dateISO="true" class="form-control" placeholder="验证日期 例如：2009-06-23" value="" />
     <input type="text" id="text6" number="true" class="form-control" placeholder="必须输入合法的数字(负数，小数)" value="" />
-    <input type="text" id="text7" digits="true" class="form-control" placeholder=" 必须输入整数"  value="" />
-    <input type="text" id="text8" creditcard="true" class="form-control" placeholder=" 必须输入合法的信用卡号"  value="" />
-    <input type="text" id="text9" accept="jpg" class="form-control" placeholder="  输入拥有合法后缀名的字符串（上传文件的后缀）" value="" />
-    <input type="text" id="text10" maxlength="5" class="form-control" placeholder="  输入长度最多是5的字符串(汉字算一个字符)" value="" />
-    <input type="text" id="text11" minlength="10" class="form-control" placeholder="   输入长度最小是10的字符串(汉字算一个字符)"  value="" />
-    <input type="text" id="text12" rangelength="5,10" class="form-control" placeholder="  输入长度必须介于 5 和 10 之间的字符串汉字算一个字符)" required="" value="" />
-    <input type="text" id="text13" range="5,10" class="form-control" placeholder="  输入值必须介于 5 和 10 之间" required="" value="" />
-    <input type="text" id="text14" max="5" class="form-control" placeholder="  输入值不能大于5"  value="" />
-    <input type="text" id="text15" min="10" class="form-control" placeholder="  输入值不能小于10" value="" />
+    <input type="text" id="text7" digits="true" class="form-control" placeholder="必须输入整数"  value="" />
+    <input type="text" id="text8" creditcard="true" class="form-control" placeholder="必须输入合法的信用卡号"  value="" />
+    <input type="text" id="text9" accept="jpg" class="form-control" placeholder="输入拥有合法后缀名的字符串（上传文件的后缀）" value="" />
+    <input type="text" id="text10" maxlength="5" class="form-control" placeholder="输入长度最多是5的字符串(汉字算一个字符)" value="" />
+    <input type="text" id="text11" minlength="10" class="form-control" placeholder="输入长度最小是10的字符串(汉字算一个字符)"  value="" />
+    <input type="text" id="text12" rangelength="5,10" class="form-control" placeholder="输入长度必须介于 5 和 10 之间的字符串汉字算一个字符)" required="" value="" />
+    <input type="text" id="text13" range="5,10" class="form-control" placeholder="输入值必须介于 5 和 10 之间" required="" value="" />
+    <input type="text" id="text14" max="5" class="form-control" placeholder="输入值不能大于5"  value="" />
+    <input type="text" id="text15" min="10" class="form-control" placeholder="输入值不能小于10" value="" />
     <input type="text" id="text17" isIntEqZero="true" class="form-control" placeholder="整数必须为0" value="" />
     <input type="text" id="text18" isIntGtZero="true" class="form-control" placeholder="整数必须大于0" value="" />
     <input type="text" id="text19" isIntGteZero="true" class="form-control" placeholder="整数必须大于或等于0" value="" />
@@ -46,10 +49,10 @@
     <input type="text" id="text32" isDigits="true" class="form-control" placeholder="只能输入0-9数字" value="" />
     <input type="text" id="text33" isChinese="true" class="form-control" placeholder="只能包含中文字符" value="" />
     <input type="text" id="text34" isEnglish="true" class="form-control" placeholder="只能包含英文字符" value="" />
-    <input type="text" id="text35" isMobile="true" class="form-control" placeholder="请正确填写您的手机号码" value="" />
+    <input type="text" id="text35" mobile="true" class="form-control" placeholder="请正确填写您的手机号码" value="" />
     <input type="text" id="text36" isPhone="true" class="form-control" placeholder="请正确填写您的电话号码" value="" />
     <input type="text" id="text37" isTel="true" class="form-control" placeholder="请正确填写您的联系方式" value="" />
-    <input type="text" id="text38" isQq="true" class="form-control" placeholder="匹配QQ" value="" />
+    <input type="text" id="text38" isQq="true" required class="form-control" placeholder="匹配QQ" value="" />
     <input type="text" id="text39" isZipCode="true" class="form-control" placeholder="请正确填写您的邮政编码" value="" />
     <input type="text" id="text40" isPwd="true" class="form-control" placeholder="以字母开头，长度在6-12之间，只能包含字符、数字和下划线。" value="" />
     <input type="text" id="text41" isIdCardNo="true" class="form-control" placeholder="请输入正确的身份证号码" value="" />
