@@ -4,7 +4,7 @@
  */
 ;(function(){
    'use strict';
-    var $validate = typeof module === 'undefined' ? (window.$validate = window.$validate || {}) : module.exports;
+    var $validate = typeof module === 'undefined' ? (window.lwjui.$validate = window.lwjui.$validate || {}) : module.exports;
     //注入中文提示
     $validate.loadHost=function(){
         var head=document.getElementsByTagName("head")[0];

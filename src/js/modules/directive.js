@@ -34,8 +34,11 @@
 		})
 		.directive('ui-validate',function(){
 			return {
-				uses:["plugin/validate/formValidate","plugin/validate/messages_zh"],
+				uses:["plugin/validate/formValidate"],
 				addcss:["formValidate"],
+				scope:{
+
+				},
 				link:function(el){
 					console.log(el)
 				}
