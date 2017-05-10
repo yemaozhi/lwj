@@ -9,7 +9,9 @@
     <script type="text/javascript">
         $(function(){
             lwjui.uses(["directive"]);
-
+            $("#addForm").click(function(){
+                $("#form-validation").before('<form ui-validate><input type="text" email="true" placeholder="请输入邮箱"/></form>')
+            })
         });
     </script>
 </head>
@@ -63,7 +65,7 @@
     <input type="text" id="text46" isContainsSpecialChar="true" class="form-control" placeholder="含有中英文特殊字符" value="" />
     <input type="submit" class="btn btn-success"/>
 </form>
-
+<button id="addForm">新增</button>
 
 </body>
 </html>
