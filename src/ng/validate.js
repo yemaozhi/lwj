@@ -19,7 +19,7 @@ var lwjui = angular.module("myApp", [])
         link:function(scope, element, attr){
             // *
             var config = angular.fromJson(scope.config);
-            var regConfig=config.errorClass||"validate_error";   //验证不通过时新增类名
+            var regConfig=config.errorClass||"validate_error";
             var validator=element.validate({
                 errorElement:config.errorElement||"label",
                 errorClass: regConfig,
@@ -39,7 +39,8 @@ var lwjui = angular.module("myApp", [])
 
             //* 重置表单
             $("[reset-validate]").click(function(){
-                element.find("input,textarea").val("");
+                element.find("input[type='text'],input[type='password'],input[type='number'],input[type='tel']," +
+                    "input[type='time'],input[type='email'],input[type='url'],textarea").val("");
                 $("select option:first").prop("selected","selected");
                 validator.resetForm();
 
