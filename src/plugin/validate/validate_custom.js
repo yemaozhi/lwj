@@ -12,6 +12,13 @@ $(function(){
         return this.optional(element) || /^(\d{16}|\d{19})$/.test(value);
     },"请输入正确的银行卡号");
 
+    //验证网址(URL)
+    jQuery.validator.addMethod("url",function(value,element){
+        var strRegex = /^((https?|ftp|news):\/\/)?([a-z]([a-z0-9\-]*[\.。])+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel)|(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))(\/[a-z0-9_\-\.~]+)*(\/([a-z0-9_\-\.]*)(\?[a-z0-9+_\-\.%=&]*)?)?(#[a-z][a-z0-9_]*)?$/
+        var re=new RegExp(strRegex);
+        return this.optional(element) || re.test(value);
+    },"请输入正确的网址");
+
     // 判断整数value是否等于0
     jQuery.validator.addMethod("isIntZero", function(value, element) {
         value=parseInt(value);
@@ -116,15 +123,10 @@ $(function(){
 
     // 手机号码验证
     jQuery.validator.addMethod("mobile", function(value, element) {
-        return this.optional(element) || /^\d{11}/.test(value);
+        return this.optional(element) || /^1(3|4|5|7|8)\d{9}$/.test(value);
     }, "请正确填写您的手机号码。");
 
 
-    // 手机号码验证
-    jQuery.validator.addMethod("isMobile", function(value, element) {
-        var length = value.length;
-        return this.optional(element) || (length == 11 && /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(value));
-    }, "请正确填写您的手机号码。");
 
     // 电话号码验证
     jQuery.validator.addMethod("isPhone", function(value, element) {
@@ -180,7 +182,7 @@ $(function(){
     // 判断是否为合法字符(a-zA-Z0-9-_)
     jQuery.validator.addMethod("isRightfulString", function(value, element) {
         return this.optional(element) || /^[A-Za-z0-9_-]+$/.test(value);
-    }, "判断是否为合法字符(a-zA-Z0-9-_)");
+    }, "请输入合法字符(字母、数字或下划线)");
 
     // 判断是否包含中英文特殊字符，除英文"-_"字符外
     jQuery.validator.addMethod("isContainsSpecialChar", function(value, element) {
