@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title></title>
-
+    <link rel="stylesheet" href="../../src/css/formValidate.css"/>
 </head>
 <body ng-controller="myCtrl">
-<form action="" ng-model="formValidate" ui-validate data-validateconf="{errorClass:'testClass',errorElement:'p'}">
-    <input type="text"  creditcard="true" ng-model="value" placeholder="请输入银行卡号"/>
+<form action="" ng-model="formValidate" ui-validate data-validateconf="{errorClass:'test_error',errorElement:'testElement'}">
+    <input type="text"  creditcard="true" required ng-model="value" placeholder="请输入银行卡号"/>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <select name="" id="">
+        <option value="请选择">请选择</option>
+        <option value="选项1">选项1</option>
+        <option value="选项2">选项2</option>
+    </select>
     <button>验证</button>
 </form>
-输入的内容:{{formValidate}}
+输入的内容:{{value}}<br/>
+<button reset-validate>重置</button>
 <script type="text/javascript"  src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
 <script src="../../src/plugin/validate/jquery.validate.js"></script>

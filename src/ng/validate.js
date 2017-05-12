@@ -18,21 +18,30 @@ var lwjui = angular.module("myApp", [])
         require:'ngModel',
         link:function(scope, element, attr){
             var config = angular.fromJson(scope.config);
-            element.validate({
-                errorElement: config.errorElement||"label",
-                errorClass: config.errorClass||"validate_error",
+            var regConfig=config.errorClass||"validate_error";   //验证不通过时新增类名
+            var validator=element.validate({
+                errorElement:config.errorElement||"label",
+                errorClass: regConfig,
                 //未通过验证时样式
                 highlight:function(el){
-                    $(el).addClass(config.errorClass||"validate_error")
+                    $(el).addClass(regConfig)
                 },
                 success:function(el){
-                    $(el).removeClass(config.errorClass||"validate_error")
+                    $(el).removeClass(regConfig)
                 },
                 //验证通过时运行的函数，提交表单
                 submitHandler:function(form){
                     //console.log("提交表单");
                     form.submit();
                 }
+            });
+
+            //重置表单
+            $("[reset-validate]").click(function(){
+                element.find("input,textarea").val("");
+                $("select option:first").prop("selected","selected");
+                validator.resetForm();
+
             })
         }
     }

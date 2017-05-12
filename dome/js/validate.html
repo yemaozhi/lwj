@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<form name="form_product" id="form-validation" errorClass="a" errorElement="label" ui-validate action="" class="form-horizontal form-validation" accept-charset="UTF-8" method="post">
+<form name="form_product" id="form-validation"  errorElement="label" ui-validate action="" class="form-horizontal form-validation" accept-charset="UTF-8" method="post">
     <input type="text" id="text1" class="form-control" placeholder="不能为空" required="true" value="" />
     <input type="text" id="text2" email="true" class="form-control" placeholder="验证邮箱"  value="" />
     <input type="text" id="text3" url="true" class="form-control" placeholder="验证URL"value="" />
@@ -65,6 +65,7 @@
     <input type="submit" class="btn btn-success"/>
 </form>
 <button id="addForm">新增</button>
+<button reset-validate>重置</button>
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 !(function(win,lwjui){
+	'use strict';
 	lwjui.validate = (function($validate){
-
+		var validator=null;
 		//表单验证方法
 		$validate.methods=function(){
 			//验证邮箱
@@ -224,10 +225,22 @@
 			}
 		};
 
+        //重置表单
+		$validate.reset=function(_this,p){
+			$("[reset-validate]").click(function(){
+				_this.find("input,textarea").val("");
+				$("select option:first").prop("selected","selected");
+				validator.resetForm();
+				//清除自定义errorClass
+				p.errorClass?$(_this).find(p.errorClass).removeClass(p.errorClass):$(_this).find(".validate_error").removeClass("validate_error");
+			})
+
+		};
+
 		//组件初始化
 		$validate.validateInit=function($this,p){
 			p= $.extend(p);
-			$($this).validate({
+			validator=$($this).validate({
 				errorElement: p.errorElement||"label",
 				errorClass: p.errorClass||"validate_error",
 				//未通过验证时样式
@@ -243,8 +256,8 @@
 					form.submit();
 				}
 			});
-
 			this.methods();
+			this.reset($this,p);
 		};
 
 		$validate.init=function(p){
@@ -264,9 +277,11 @@
 	})({});
 })(window,lwjui);
 
+
 lwjui.directive('ui-validate',function(){
 	return {
 		uses:["plugin/validate/jquery.validate.js","plugin/validate/messages_zh.js"],
+		addcss:["css/formValidate.css"],
 		scope:{
 			errorClass:'errorClass',
 			errorElement:'errorElement'
@@ -276,4 +291,4 @@ lwjui.directive('ui-validate',function(){
 			service.init(config);
 		}
 	}
-})
+});
