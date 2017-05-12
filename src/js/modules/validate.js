@@ -5,6 +5,8 @@
 
         //重置表单
 		$validate.reset=function(_this,p){
+
+			///*
 			$("[reset-validate]").click(function(){
 				_this.find("input[type='text'],input[type='password'],input[type='number'],input[type='tel']," +
 					"input[type='time'],input[type='email'],input[type='url'],textarea").val("");
@@ -32,6 +34,7 @@
 				//验证通过时运行的函数，提交表单
 				submitHandler:function(form){
 					//console.log("提交表单");
+					// 缺少提交ajax提交
 					form.submit();
 				}
 			});
@@ -39,16 +42,17 @@
 		};
 
 		$validate.init=function(p){
-			//自动查找form标签，需加ui-validate属性，自动注册validate验证
+			//*自动查找form标签，需加ui-validate属性，自动注册validate验证
 			$("form[ui-validate]").each(function(){
 				var _this=$(this);
 				$validate.validateInit(_this,p);
 			});
-			//为表单元素绑定事件并初始化表单验证，防止动态生成表单时无法初始化验证
-			$(document).off("click","form[ui-validate]").on("click","form[ui-validate]",function(){
-				var _this=$(this);
-				$validate.validateInit(_this,p);
-			});
+
+			// //为表单元素绑定事件并初始化表单验证，防止动态生成表单时无法初始化验证
+			// $(document).off("click","form[ui-validate]").on("click","form[ui-validate]",function(){
+			// 	var _this=$(this);
+			// 	$validate.validateInit(_this,p);
+			// });
 		};
 
 		return $validate;
@@ -59,7 +63,7 @@
 lwjui.directive('ui-validate',function(){
 	return {
 		uses:["plugin/validate/jquery.validate.js","plugin/validate/messages_zh.js","plugin/validate/validate_custom.js"],
-		addcss:["css/formValidate.css"],
+		addcss:["*css/formValidate.css"],
 		scope:{
 			errorClass:'errorClass',
 			errorElement:'errorElement'

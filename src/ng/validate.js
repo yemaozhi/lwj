@@ -1,5 +1,5 @@
 var lwjui = angular.module("myApp", [])
-
+    // 缺少form状态
     .controller('myCtrl', ['$scope', function($scope) {
     $scope.validateDate={
         errorClass:null,
@@ -17,6 +17,7 @@ var lwjui = angular.module("myApp", [])
         },
         require:'ngModel',
         link:function(scope, element, attr){
+            // *
             var config = angular.fromJson(scope.config);
             var regConfig=config.errorClass||"validate_error";   //验证不通过时新增类名
             var validator=element.validate({
@@ -32,11 +33,11 @@ var lwjui = angular.module("myApp", [])
                 //验证通过时运行的函数，提交表单
                 submitHandler:function(form){
                     //console.log("提交表单");
-                    form.submit();
+                    //*form.submit();
                 }
             });
 
-            //重置表单
+            //* 重置表单
             $("[reset-validate]").click(function(){
                 element.find("input,textarea").val("");
                 $("select option:first").prop("selected","selected");
