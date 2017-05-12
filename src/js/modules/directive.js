@@ -32,17 +32,6 @@
 				}
 			};
 		})
-		.directive('ui-validate',function(){
-			return {
-				uses:["plugin/validate/formValidate"],
-				addcss:["formValidate"],
-				scope:{
 
-				},
-				link:function(el){
-					console.log(el)
-				}
-			}
-		})
 
 })(window, lwjui);
