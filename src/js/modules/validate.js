@@ -6,7 +6,8 @@
         //重置表单
 		$validate.reset=function(_this,p){
 			$("[reset-validate]").click(function(){
-				_this.find("input,textarea").val("");
+				_this.find("input[type='text'],input[type='password'],input[type='number'],input[type='tel']," +
+					"input[type='time'],input[type='email'],input[type='url'],textarea").val("");
 				$("select option:first").prop("selected","selected");
 				validator.resetForm();
 				//清除自定义errorClass
