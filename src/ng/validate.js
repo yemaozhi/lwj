@@ -1,23 +1,22 @@
-var lwjui = angular.module("myApp", []);
-lwjui.controller('myCtrl', ['$scope', function($scope) {
+var lwjui = angular.module("myApp", [])
+
+    .controller('myCtrl', ['$scope', function($scope) {
     $scope.validateDate={
         errorClass:null,
         errorElement:null
-    }
-    $scope.value=""
-}]);
+    };
+    $scope.value="";
+    $scope.formValidate="";
+    }])
 
-
-lwjui.directive("uiValidate",function(){
+    .directive("uiValidate",function(){
     return {
-        restrict:"E",
+        restrict:"AE",
         scope:{
-            config:"@validateconf"
+            config:"=validateconf"
         },
         require:'ngModel',
-        transclude:true,
         link:function(scope, element, attr){
-            console.log(element)
             var config = angular.fromJson(scope.config);
             element.validate({
                 errorElement: config.errorElement||"label",
@@ -38,3 +37,5 @@ lwjui.directive("uiValidate",function(){
         }
     }
 });
+
+

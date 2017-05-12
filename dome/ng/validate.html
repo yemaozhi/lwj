@@ -7,10 +7,11 @@
 
 </head>
 <body ng-controller="myCtrl">
-<form action="" ui-validate>
-    <input type="text" data-validateconf="{{validateDate}}" email="true" ng-model="value" placeholder="请输入邮箱"/>
+<form action="" ng-model="formValidate" ui-validate data-validateconf="{errorClass:'testClass',errorElement:'p'}">
+    <input type="text"  creditcard="true" ng-model="value" placeholder="请输入银行卡号"/>
+    <button>验证</button>
 </form>
-输入的内容:{{value}}
+输入的内容:{{formValidate}}
 <script type="text/javascript"  src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
 <script src="../../src/plugin/validate/jquery.validate.js"></script>

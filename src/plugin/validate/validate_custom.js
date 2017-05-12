@@ -10,7 +10,7 @@ $(function(){
     //验证银行卡号
     jQuery.validator.addMethod("creditcard",function(value,element){
         return this.optional(element) || /^(\d{16}|\d{19})$/.test(value);
-    });
+    },"请输入正确的银行卡号");
 
     // 判断整数value是否等于0
     jQuery.validator.addMethod("isIntZero", function(value, element) {
