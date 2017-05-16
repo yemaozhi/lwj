@@ -1,26 +1,38 @@
-var lwjui = angular.module("myApp", [])
-    // 缺少form状态
+var myApp=$("[ng-app]").attr("ng-app");
+var lwjui = angular.module(myApp, [])
     .controller('myCtrl', ['$scope', function($scope) {
-    $scope.validateDate={
-        errorClass:null,
-        errorElement:null
-    };
-    $scope.value="";
-    $scope.formValidate="";
+        $scope.formValidate=function(){
+            if($scope.validate){
+                var params={
+                    creditcard:$scope.value,
+                    email:$scope.email
+                };
+                $.post("127.0.0.1",params,function(){
+
+                });
+            }
+        };
+        /**
+         * 验证不通过时显示的样式及容器
+         * errorClass  类名
+         * errorElement 容器元素
+         */
+        $scope.validateDate={
+            errorClass:"test_error",
+            errorElement:"label"
+        };
     }])
+
+
 
     .directive("uiValidate",function(){
     return {
         restrict:"AE",
-        scope:{
-            config:"=validateconf"
-        },
-        require:'ngModel',
-        link:function(scope, element, attr){
-            // *
-            var config = angular.fromJson(scope.config);
+        require:"ngModel",
+        link:function(scope, element, attr,ngModel){
+            var config =scope.validateDate;
             var regConfig=config.errorClass||"validate_error";
-            var validator=element.validate({
+            element.validate({
                 errorElement:config.errorElement||"label",
                 errorClass: regConfig,
                 //未通过验证时样式
@@ -28,23 +40,14 @@ var lwjui = angular.module("myApp", [])
                     $(el).addClass(regConfig)
                 },
                 success:function(el){
-                    $(el).removeClass(regConfig)
+                    $(el).removeClass(regConfig);
                 },
-                //验证通过时运行的函数，提交表单
+                //验证通过时运行的函数
                 submitHandler:function(form){
-                    //console.log("提交表单");
-                    //*form.submit();
+                    ngModel.$setViewValue(element.valid());
                 }
             });
 
-            //* 重置表单
-            $("[reset-validate]").click(function(){
-                element.find("input[type='text'],input[type='password'],input[type='number'],input[type='tel']," +
-                    "input[type='time'],input[type='email'],input[type='url'],textarea").val("");
-                $("select option:first").prop("selected","selected");
-                validator.resetForm();
-
-            })
         }
     }
 });

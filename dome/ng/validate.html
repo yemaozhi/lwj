@@ -4,27 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title></title>
-    <link rel="stylesheet" href="../../src/css/formValidate.css"/>
+    <link rel="stylesheet" href="../../src/plugin/validate/formValidate.css"/>
+    <style>
+        .test_error{
+            color: green;
+            border-color: green;
+        }
+    </style>
 </head>
 <body ng-controller="myCtrl">
-<form action="" ng-model="formValidate" ui-validate data-validateconf="{errorClass:'test_error',errorElement:'testElement'}">
-    <input type="text"  creditcard="true" required ng-model="value" placeholder="请输入银行卡号"/>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
-    <select name="" id="">
-        <option value="请选择">请选择</option>
-        <option value="选项1">选项1</option>
-        <option value="选项2">选项2</option>
-    </select>
-    <button>验证</button>
-
-    
+<form action="" ui-validate name="myForm" ng-model="isValidate" ng-submit="formValidate()">
+    <input type="text" id="text1" name="write"  required  placeholder="必填" value=""/>
+    <input type="text" id="creditcard" name="creditcard" creditcard="true" required ng-model="value" placeholder="请输入银行卡号"/>
+    <input type="text" id="email" name="emial" email="true" ng-model="email" placeholder="请输入邮箱" value=""/>
+    <input type="submit" ng-disabled="myForm.$invalid">
 </form>
 输入的内容:{{value}}<br/>
-<button reset-validate>重置</button>
+邮箱:{{email}}<br/>
+
 <script type="text/javascript"  src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
 <script src="../../src/plugin/validate/jquery.validate.js"></script>
 <script src="../../src/plugin/validate/validate_custom.js"></script>
+<script src="../../src/plugin/validate/messages_zh.js"></script>
 <script src="../../src/ng/validate.js"></script>
+<script>
+
+</script>
 </body>
 </html>
